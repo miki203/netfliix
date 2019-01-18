@@ -1,0 +1,17 @@
+<nav class="navbar navbar-dark mb-5 fixed-top" [class.selected]="scroll">
+  <a routerLink="/"> <img src="./assets/img/netfliix.png"> </a>
+  <div class="navbar-expand mr-auto">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" [routerLink]="['home']" [routerLinkActive]="['active']" >Strona Główna</a>
+      <a class="nav-item nav-link" [routerLink]="['category']" [routerLinkActive]="['active']">Kategorie</a>
+      <a class="nav-item nav-link" [routerLink]="['category']">Moja lista</a>
+    </div>
+  </div>
+  <div class="navbar-expand ml-auto navbar-nav">
+    <div class="navbar-nav">
+      <img class="navbar" src="./assets/img/search.png">
+      <img class="navbar" src="./assets/img/menu.png">
+      <img class="navbar" (click)="logout()" [routerLink]="['login']" src="./assets/img/logout.png">
+    </div>
+  </div>
+</nav>

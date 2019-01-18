@@ -1,0 +1,32 @@
+<div class="row top">
+  <h1 class="headCategory">Sci-Fi</h1>
+</div>
+<div class="row">
+  <div class="col p-1 " *ngFor="let movie of moviesSciFi">
+    <img class="img-fluid img" src={{movie.thumbnailUrl}} (click)="ogladaj(movie)"/>
+  </div>
+</div>
+<div class="row">
+  <h1 class="headCategory">Komedie</h1>
+</div>
+<div class="row">
+  <div class="col p-1 " *ngFor="let movie of moviesComedy">
+    <img class="img-fluid img" src={{movie.thumbnailUrl}}  (click)="ogladaj(movie)"/>
+  </div>
+</div>
+<div class="row">
+  <h1 class="headCategory">Horrory</h1>
+</div>
+<div class="row">
+  <div class="col p-1 " *ngFor="let movie of moviesHorrors">
+    <img class="img-fluid img" src={{movie.thumbnailUrl}}  (click)="ogladaj(movie)"/>
+  </div>
+</div>
+<div class="row">
+  <h1 class="headCategory">Thrillery</h1>
+</div>
+<div class="row">
+  <div class="col p-1" *ngFor="let movie of moviesThriller">
+    <img class="img-fluid img" src={{movie.thumbnailUrl}}  (click)="ogladaj(movie)"/>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+.home {
+  height: 750px;
+  overflow: hidden;
+}
+
+.headFilm p {
+  position: absolute;
+  left:70px; top:250px;
+  font-family: Cubadak, Arial;
+  font-size: 15ex;
+  color: aliceblue;
+}
+
+
+
+.buttonDashboard {
+  position: absolute;
+  left:70px; top:450px;
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+.gradient{
+  position:relative;
+}
+
+.gradient:active {
+  position:absolute;
+  left:0; top:0;
+  width:100%; height:100%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 50%,rgba(0, 0, 0, 1) 100%);
+}
