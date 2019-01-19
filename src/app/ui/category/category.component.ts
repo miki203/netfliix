@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class CategoryComponent implements OnInit {
 
-
+  images = [1, 2, 3, 4].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
 
   private moviesComedy: any = [];
   private moviesHorrors: any = [];
@@ -26,7 +26,6 @@ export class CategoryComponent implements OnInit {
   ngOnInit() {
     this.movieService.getMovie('example_video').subscribe(data => {
       let movie = new Movie(
-        data.id,
         data.category,
         data.description,
         data.movieUrl,
@@ -56,7 +55,5 @@ export class CategoryComponent implements OnInit {
   ogladaj(movie: Movie) {
     this.movieTransferService.setMovie(movie);
     this.router.navigate(['videogular']);
-    console.log("dziala ? ")
   }
-
 }

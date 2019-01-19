@@ -4,14 +4,27 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link" [routerLink]="['home']" [routerLinkActive]="['active']" >Strona Główna</a>
       <a class="nav-item nav-link" [routerLink]="['category']" [routerLinkActive]="['active']">Kategorie</a>
-      <a class="nav-item nav-link" [routerLink]="['category']">Moja lista</a>
+      <a class="nav-item nav-link" [routerLink]="['category']" [routerLinkActive]="['active']">Moja lista</a>
     </div>
   </div>
   <div class="navbar-expand ml-auto navbar-nav">
     <div class="navbar-nav">
-      <img class="navbar" src="./assets/img/search.png">
-      <img class="navbar" src="./assets/img/menu.png">
-      <img class="navbar" (click)="logout()" [routerLink]="['login']" src="./assets/img/logout.png">
+      <form class="form-inline md-form form-sm">
+        <input class="form-control form-control-sm ml-2 w-75 " type="text" placeholder="Search" aria-label="Wyszukaj">
+      </form>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon svgIcon="menu"></mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon svgIcon="menu">menu</mat-icon>
+          <span [routerLink]="['my_user']">Mój profil</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon svgIcon="menu">menu</mat-icon>
+          <span (click)="logout()" [routerLink]="['login']">Wyloguj</span>
+        </button>
+      </mat-menu>
     </div>
   </div>
 </nav>

@@ -5,6 +5,7 @@ import {Movie} from '../model/movie';
 import {Observable} from 'rxjs';
 import {UserService} from './user.service';
 import {UrlConstants} from '../url-constants';
+import {AddMovie} from '../model/add-movie';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,6 @@ export class MovieService {
         this.userId = value;
       }
     });
-    console.log("usrId: " + this.userId)
-
   }
 
   getMovie(movieTitle): Observable<any> {
@@ -37,8 +36,13 @@ export class MovieService {
 
   getByCategory(category) {
     let params = new HttpParams()
-      .append('category', category)
+      .append('category', category);
     return this.http.get(UrlConstants.URL_MOVIES_GET_CATEGORY, {params: params});
   }
 
+  addMovie(movie: AddMovie): Observable<any> {
+    let body = JSON.stringify(movie);
+    console.log(body);
+    return this.http.post(UrlConstants.URL_MOVIES_ADD_MOVIE, body, {headers: this.headers});
+  }
 }

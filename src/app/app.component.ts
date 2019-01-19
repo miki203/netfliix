@@ -5,13 +5,16 @@ import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit{
 
   constructor(private elementRef: ElementRef) {
 
   }
-  ngAfterViewInit(): void {
-    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = 'black';
+
+  ngOnInit(): void {
   }
+  // ngAfterViewInit(): void {
+  //   this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = 'black';
+  // }
 }
 

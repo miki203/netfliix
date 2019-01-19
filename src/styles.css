@@ -4,3 +4,9 @@
 @import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 @import url("https://raw.githubusercontent.com/videogular/videogular2/master/fonts/videogular.css");
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+body {
+  background-color: black;
+}

@@ -1,32 +1,44 @@
-<div class="row top">
-  <h1 class="headCategory">Sci-Fi</h1>
+<div class="row container">
+  <h1 class="headCategory">Sci-Fi</h1><a class="show_all" href="../category/sci-fi"> Pokaż wszystkie</a>
 </div>
 <div class="row">
-  <div class="col p-1 " *ngFor="let movie of moviesSciFi">
-    <img class="img-fluid img" src={{movie.thumbnailUrl}} (click)="ogladaj(movie)"/>
+  <div class="min_movie" *ngFor="let movie of moviesSciFi; let i=index;">
+    <img class="img-fluid img" *ngIf="i<4" src={{movie.thumbnailUrl}} (click)="ogladaj(movie)"/>
+    <div class="gradient"></div>
+    <span class="title_movie" *ngIf="i<4">{{movie.title}}</span>
+    <img class="add_to_my_list" *ngIf="i<4" src="assets/img/add.png">
   </div>
 </div>
 <div class="row">
-  <h1 class="headCategory">Komedie</h1>
+  <h1 class="headCategory">Komedie</h1><a class="show_all" href="../category/comedy">Pokaż wszystkie</a>
 </div>
 <div class="row">
-  <div class="col p-1 " *ngFor="let movie of moviesComedy">
-    <img class="img-fluid img" src={{movie.thumbnailUrl}}  (click)="ogladaj(movie)"/>
+  <div class="min_movie" *ngFor="let movie of moviesComedy; let i=index;">
+    <img class="img-fluid img" *ngIf="i<4" src={{movie.thumbnailUrl}} (click)="ogladaj(movie)"/>
+    <div class="gradient"></div>
+    <span class="title_movie" *ngIf="i<4">{{movie.title}}</span>
+    <img class="add_to_my_list" *ngIf="i<4" src="assets/img/add.png">
   </div>
 </div>
 <div class="row">
-  <h1 class="headCategory">Horrory</h1>
+  <h1 class="headCategory">Horrory</h1><a class="show_all" href="../category/horror">Pokaż wszystkie</a>
 </div>
 <div class="row">
-  <div class="col p-1 " *ngFor="let movie of moviesHorrors">
-    <img class="img-fluid img" src={{movie.thumbnailUrl}}  (click)="ogladaj(movie)"/>
+  <div class="min_movie" *ngFor="let movie of moviesHorrors; let i=index;">
+    <img class="img-fluid img" *ngIf="i<4" src={{movie.thumbnailUrl}} (click)="ogladaj(movie)"/>
+    <div class="gradient"></div>
+    <span class="title_movie" *ngIf="i<4">{{movie.title}}</span>
+    <img class="add_to_my_list" *ngIf="i<4" src="assets/img/add.png">
   </div>
 </div>
 <div class="row">
-  <h1 class="headCategory">Thrillery</h1>
+  <h1 class="headCategory">Thrillery</h1><a class="show_all" href="../category/thriller">Pokaż wszystkie</a>
 </div>
 <div class="row">
-  <div class="col p-1" *ngFor="let movie of moviesThriller">
-    <img class="img-fluid img" src={{movie.thumbnailUrl}}  (click)="ogladaj(movie)"/>
+  <div class="min_movie" *ngFor="let movie of moviesThriller; let i=index;">
+    <img class="img-fluid img" *ngIf="i<4" src={{movie.thumbnailUrl}} (click)="ogladaj(movie)"/>
+    <div class="gradient"></div>
+    <span class="title_movie" *ngIf="i<4" >{{movie.title}}</span>
+    <img class="add_to_my_list" *ngIf="i<4" src="assets/img/add.png">
   </div>
 </div>

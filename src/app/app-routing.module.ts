@@ -10,15 +10,19 @@ import {VideogularComponent} from './videogular/videogular.component';
 import { AuthGuard } from './guard/auth-guard';
 import {ModalComponent} from './ui/modal/modal.component';
 import {RegisterComponent} from './register/register.component';
+import {UserComponent} from './ui/user/user.component';
+import {OneCategoryComponent} from './ui/one-category/one-category.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'category', component: CategoryComponent, canActivate: [AuthGuard]},
+  {path: 'category/:categoryId', component: OneCategoryComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'videogular', component: VideogularComponent, canActivate: [AuthGuard]},
   {path: 'modal', component: ModalComponent, canActivate: [AuthGuard]},
   {path: 'register', component: RegisterComponent},
+  {path: 'my_user', component: UserComponent, canActivate: [AuthGuard]},
 
 
 ];
