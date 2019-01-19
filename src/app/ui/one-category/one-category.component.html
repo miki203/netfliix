@@ -1,0 +1,9 @@
+<div class="row top">
+  <div class="min_movie movies" *ngFor="let movie of movies">
+      <img class="img-fluid img movie" src={{movie.thumbnailUrl}} (click)="ogladaj(movie)"/>
+    <div class="gradient"></div>
+    <span class="title_movie">{{movie.title}}</span>
+    <img class="add_to_my_list" src="assets/img/add.png">
+   </div>
+
+</div>

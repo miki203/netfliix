@@ -1,0 +1,21 @@
+.container {
+  margin-top: 70px;
+}
+
+.content {
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.user {
+  padding: 20px;
+}
+
+.sekcja {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.pole {
+  padding: 15px;
+}

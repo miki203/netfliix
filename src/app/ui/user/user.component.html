@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="content bg-light">
+    <div class="title">
+      <h1>Konto</h1>
+    </div>
+    <div class="user text-center">
+      <mat-divider></mat-divider>
+      <div class="row">
+        <div class="col text-left pole">
+          <h3>Użytkownik</h3>
+        </div>
+        <div class="col text-left sekcja">
+          <div class="User pole">
+            <p class=""><b>Imie: </b>{{user.firstName}}</p>
+            <p class=""><b>Nazwisko: </b>{{user.lastName}}</p>
+            <p class=""><b>Login: </b>{{user.username}}</p>
+            <p class=""><b>e-mail: </b>{{user.email}}</p>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="Password pole">
+            <span>Hasło: </span>
+            <button class="button">Zmień</button>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="Password pole">
+            <span><b>Pakiet:</b> Premium</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
