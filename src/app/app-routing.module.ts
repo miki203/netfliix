@@ -12,6 +12,7 @@ import {ModalComponent} from './ui/modal/modal.component';
 import {RegisterComponent} from './register/register.component';
 import {UserComponent} from './ui/user/user.component';
 import {OneCategoryComponent} from './ui/one-category/one-category.component';
+import {MyListComponent} from './ui/my-list/my-list.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'modal', component: ModalComponent, canActivate: [AuthGuard]},
   {path: 'register', component: RegisterComponent},
   {path: 'my_user', component: UserComponent, canActivate: [AuthGuard]},
+  {path: 'my_list', component: MyListComponent, canActivate: [AuthGuard]},
 
 
 ];

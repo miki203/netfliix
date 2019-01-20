@@ -18,8 +18,9 @@
           </div>
           <mat-divider></mat-divider>
           <div class="Password pole">
-            <span>Hasło: </span>
-            <button class="button">Zmień</button>
+            <span>Wprowadź nowe hasło: </span>
+            <input type="password" id="password" class="form-control" [(ngModel)]="newPassword" name="newPassword" required="">
+            <button class="button" (click)="changePassword(newPassword)">Zmień</button>
           </div>
           <mat-divider></mat-divider>
           <div class="Password pole">

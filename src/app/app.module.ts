@@ -57,18 +57,14 @@ import {AppComponent} from './app.component';
 import {UiModule} from './ui/ui.module';
 import {HttpClientModule} from '@angular/common/http';
 import {MaterialModule} from './material-module';
-import {Routes} from '@angular/router';
-import {CategoryComponent} from './ui/category/category.component';
 import {LoginComponent} from './login/login.component';
 import { VideogularComponent } from './videogular/videogular.component';
 import {AuthGuard} from './guard/auth-guard';
 import { RegisterComponent } from './register/register.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 
-const appRoutes: Routes = [
-  { path: 'category', component: CategoryComponent },
-  { path: 'login', component: LoginComponent },
-];
+import { NgFlashMessagesModule } from 'ng-flash-messages';
+
 
 @NgModule({
   declarations: [
@@ -134,6 +130,8 @@ const appRoutes: Routes = [
     MatTooltipModule,
     MatTreeModule,
     ScrollingModule,
+
+    NgFlashMessagesModule.forRoot(),
   ],
   exports: [
     AppComponent,

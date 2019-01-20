@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {Categories} from '../category/categories.enum';
 import {Movie} from '../../model/movie';
 import {MovieService} from '../../services/movie.service';
+import {MovieTransferService} from '../../services/movie-transfer.service';
+import {NgFlashMessageService} from 'ng-flash-messages';
 
 @Component({
   selector: 'app-one-category',
@@ -14,7 +16,12 @@ export class OneCategoryComponent implements OnInit {
   href: String;
   private movies: any = [];
 
-  constructor(private router: Router, private movieService: MovieService) {
+  constructor(
+    private router: Router,
+    private movieService: MovieService,
+    private movieTransferService: MovieTransferService,
+    private ngFlashMessageService: NgFlashMessageService
+  ) {
   }
 
   ngOnInit() {
@@ -41,6 +48,29 @@ export class OneCategoryComponent implements OnInit {
       });
     }
 
+  }
+
+  ogladaj(movie: Movie) {
+    this.movieTransferService.setMovie(movie);
+    this.router.navigate(['videogular']);
+  }
+
+  saveToMyList(movie: Movie) {
+    this.movieService.saveToMyList(movie).subscribe(data => {
+      this.ngFlashMessageService.showFlashMessage({
+        messages: ['Film dodany do "Moja lista"'],
+        dismissible: true,
+        timeout: 2000,
+        type: 'success'
+      });
+    }, error1 => {
+      this.ngFlashMessageService.showFlashMessage({
+        messages: [error1],
+        dismissible: true,
+        timeout: 2000,
+        type: 'success'
+      });
+    });
   }
 
 }

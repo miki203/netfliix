@@ -5,21 +5,26 @@
 
 .headFilm p {
   position: absolute;
-  left:70px; top:250px;
+  left:70px; top:450px;
   font-family: Cubadak, Arial;
-  font-size: 15ex;
+  font-size: 9ex;
   color: aliceblue;
 }
 
+.title_main {
+  position: relative;
+  text-shadow: 0 0 10px #000000;
+}
 
+.btnMyList {
+  position: absolute;
+  left: 70px;
+  top: 583px;
+}
 
 .buttonDashboard {
   position: absolute;
   left:70px; top:450px;
-}
-
-.btn {
-  margin-right: 10px;
 }
 
 .gradient{

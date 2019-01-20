@@ -56,6 +56,8 @@ import {
 import { UserComponent } from './user/user.component';
 import { OneCategoryComponent } from './one-category/one-category.component';
 import {NgSelectModule} from '@ng-select/ng-select';
+import { MyListComponent } from './my-list/my-list.component';
+import {NgFlashMessagesModule} from 'ng-flash-messages';
 
 @NgModule({
   declarations: [
@@ -67,6 +69,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
     ModalComponent,
     UserComponent,
     OneCategoryComponent,
+    MyListComponent,
   ],
   imports: [
     CommonModule,
@@ -113,6 +116,8 @@ import {NgSelectModule} from '@ng-select/ng-select';
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
+
+    NgFlashMessagesModule.forRoot(),
   ],
   exports: [
     AppRoutingModule,

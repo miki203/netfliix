@@ -1,15 +1,17 @@
 export class Movie {
-  category : String;
-  description : String;
-  movieUrl : String;
-  thumbnailUrl : String;
-  timestamp : number;
-  title : String;
+  id: Number;
+  category: String;
+  description: String;
+  movieUrl: String;
+  thumbnailUrl: String;
+  timestamp: number;
+  title: String;
 
 
-  constructor(category?: String, description?: String,
+  constructor(id?, category?: String, description?: String,
               movieUrl?: String, thumbnailUrl?: String,
               timestamp?: number, title?: String) {
+    this.id = id;
     this.category = category;
     this.description = description;
     this.movieUrl = movieUrl;

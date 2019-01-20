@@ -24,6 +24,9 @@ export class HeaderComponent implements OnInit {
     iconRegistry.addSvgIcon(
       'logout',
       sanitizer.bypassSecurityTrustResourceUrl('assets/img/logout.svg'));
+    iconRegistry.addSvgIcon(
+      'profil',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/profil.svg'));
   }
 
 
@@ -51,6 +54,7 @@ export class HeaderComponent implements OnInit {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    window.location.reload();
   }
 
   search() {

@@ -1,3 +1,35 @@
 .container {
   margin-top: 70px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
 }
+
+.lewa {
+  text-align: left;
+  padding: 40px;
+}
+
+.headMovie {
+  padding-bottom: 40px;
+}
+
+.prawa {
+  text-align: right;
+  padding: 130px 50px 50px 50px;
+}
+
+.info {
+  font-size: 18px;
+}
+
+.player {
+  margin: auto;
+  overflow: hidden;
+}
+
+.videogular-container {
+
+}
+
+

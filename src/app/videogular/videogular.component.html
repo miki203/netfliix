@@ -1,30 +1,47 @@
-<!-- Przycisk uruchamiający modal -->
-<div class="container">
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+<link rel="stylesheet" type="text/css" href="/yourpathtocss/css/videogular.css">
+
+<div class="row container bg-light">
+  <div class="row">
+    <div class="col lewa">
+      <h1 class="headMovie">{{movie.title}}</h1>
+      <div class="player">
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLongTitle"
+             aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+        <p>
+          <vg-player>
+            <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+              <source src={{movie.movieUrl}} type="video/mp4">
+            </video>
+          </vg-player>
+        </p>
       </div>
     </div>
+    <div class="col prawa">
+      <div class="info">
+        <p class=""><b>Tytuł: </b>{{movie.title}}</p>
+        <p class=""><b>Opis: </b>{{movie.description}}</p>
+        <p class=""><b>Kategoria: </b>{{movie.category}}</p>
+      </div>
+      <button class="btn btn-success" (click)="saveToMyList(movie)">+ Moja lista</button>
+    </div>
   </div>
-<p>
-  <vg-player>
-    <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
-      <source src={{movie.movieUrl}} type="video/mp4">
-    </video>
-  </vg-player>
-</p>
 </div>

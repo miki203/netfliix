@@ -18,7 +18,6 @@ export class MovieService {
       'Content-type': 'application/json'
     });
     let userJson = localStorage.getItem('currentUser');
-    console.log(userJson);
 
     JSON.parse(userJson, (key, value) => {
       if(key === 'id') {
@@ -34,6 +33,10 @@ export class MovieService {
     return this.http.get(UrlConstants.URL_MOVIES_GET_MOVIE, {params: params});
   }
 
+  getMovies() {
+    return this.http.get(UrlConstants.URL_MOVIES);
+  }
+
   getByCategory(category) {
     let params = new HttpParams()
       .append('category', category);
@@ -42,7 +45,22 @@ export class MovieService {
 
   addMovie(movie: AddMovie): Observable<any> {
     let body = JSON.stringify(movie);
-    console.log(body);
     return this.http.post(UrlConstants.URL_MOVIES_ADD_MOVIE, body, {headers: this.headers});
+  }
+
+  saveToMyList(movie: Movie): Observable<any> {
+    let params = new HttpParams()
+      .append('movieId', movie.id.toString())
+      .append('userId', this.userId);
+
+    let body = JSON.stringify(movie);
+    console.log(body);
+    return this.http.post(UrlConstants.URL_MOVIES_ADD_TO_MY_LIST, body, {params: params});
+  }
+
+  getMyList() {
+    let params = new HttpParams()
+      .append('userId', this.userId);
+    return this.http.get(UrlConstants.URL_MOVIES_GET_MY_LIST, {params: params});
   }
 }

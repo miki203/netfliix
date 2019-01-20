@@ -4,7 +4,7 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link" [routerLink]="['home']" [routerLinkActive]="['active']" >Strona Główna</a>
       <a class="nav-item nav-link" [routerLink]="['category']" [routerLinkActive]="['active']">Kategorie</a>
-      <a class="nav-item nav-link" [routerLink]="['category']" [routerLinkActive]="['active']">Moja lista</a>
+      <a class="nav-item nav-link" [routerLink]="['my_list']" [routerLinkActive]="['active']">Moja lista</a>
     </div>
   </div>
   <div class="navbar-expand ml-auto navbar-nav">
@@ -17,11 +17,11 @@
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>
-          <mat-icon svgIcon="menu">menu</mat-icon>
+          <mat-icon svgIcon="profil">menu</mat-icon>
           <span [routerLink]="['my_user']">Mój profil</span>
         </button>
         <button mat-menu-item>
-          <mat-icon svgIcon="menu">menu</mat-icon>
+          <mat-icon svgIcon="logout">menu</mat-icon>
           <span (click)="logout()" [routerLink]="['login']">Wyloguj</span>
         </button>
       </mat-menu>

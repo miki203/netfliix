@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { ModalService } from '../../_services/ModalService';
+import {ModalService} from '../../_services/ModalService';
+import {Movie} from '../../model/movie';
+import {MovieService} from '../../services/movie.service';
+import {Categories} from '../category/categories.enum';
+import {MovieTransferService} from '../../services/movie-transfer.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +13,28 @@ import { ModalService } from '../../_services/ModalService';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  private bodyText: string;
+  private randomMovie: Movie;
 
-  constructor(private modalService: ModalService) {
+  constructor(private modalService: ModalService, private movieService: MovieService,
+              private movieTransferService: MovieTransferService, private router: Router) {
   }
 
   ngOnInit() {
-    this.bodyText = 'This text can be updated in modal 1';
+    this.movieService.getMovies().subscribe((data: Movie[]) => {
+      this.randomMovie = data[Math.floor(Math.random() * data.length)];
+    });
   }
 
-  openModal(id: string) {
-    this.modalService.open(id);
+  saveToMyList(movie: Movie) {
+    this.movieService.saveToMyList(movie).subscribe(data => {
+      console.log(data);
+    }, error1 => {
+      console.log(error1);
+    });
   }
 
-  closeModal(id: string) {
-    this.modalService.close(id);
+  ogladaj(movie: Movie) {
+    this.movieTransferService.setMovie(movie);
+    this.router.navigate(['videogular']);
   }
 }

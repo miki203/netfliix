@@ -12,8 +12,6 @@ import {Router} from '@angular/router';
 })
 export class CategoryComponent implements OnInit {
 
-  images = [1, 2, 3, 4].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
-
   private moviesComedy: any = [];
   private moviesHorrors: any = [];
   private moviesSciFi: any = [];
@@ -24,16 +22,7 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.movieService.getMovie('example_video').subscribe(data => {
-      let movie = new Movie(
-        data.category,
-        data.description,
-        data.movieUrl,
-        data.thumbnailUrl,
-        data.timestamp,
-        data.title,
-      );
-    });
+
   }
 
   getByCategory() {
@@ -54,6 +43,15 @@ export class CategoryComponent implements OnInit {
 
   ogladaj(movie: Movie) {
     this.movieTransferService.setMovie(movie);
+    console.log(movie);
     this.router.navigate(['videogular']);
+  }
+
+  saveToMyList(movie: Movie) {
+    this.movieService.saveToMyList(movie).subscribe(data => {
+      console.log(data);
+    }, error1 => {
+      console.log(error1);
+    });
   }
 }

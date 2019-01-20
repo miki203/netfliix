@@ -21,8 +21,9 @@
     <input type="email" id="email" class="form-control" [(ngModel)]="email" name="user" required=""/>
   </div>
   <div class="form-group">
-    <button type="submit" class="btn btn-success btn-lg " id="btnRegister" (click)="rejestruj()">Register</button>
-    <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+    <button type="submit" class="btn btn-success btn-lg " id="btnRegister" (click)="rejestruj()">Zarejestruj</button>
+    <a [routerLink]="['/login']" class="btn btn-link">Logowanie</a>
   </div>
+  <ng-flash-message></ng-flash-message>
 </form>
 </div>
