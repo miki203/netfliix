@@ -1,9 +1,8 @@
 <div class="row">
   <div class="home">
     <div class="headFilm">
-      <p class="title_main">{{randomMovie.title}}</p>
-      <button type="button" class="btn btn-light btnMyList" (click)="saveToMyList(randomMovie)">+ Moja lista</button>
-      <img class="img-fluid" (click)="ogladaj(movie)" src="{{randomMovie.thumbnailUrl}}">
+      <p class="title_main">{{randomMovie?.title}}</p>
+      <img class="img-fluid" (click)="ogladaj(randomMovie)" src="{{randomMovie?.thumbnailUrl}}">
     </div>
   </div>
 </div>

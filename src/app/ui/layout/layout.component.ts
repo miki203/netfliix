@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ngControlStatusHost} from '@angular/forms/src/directives/ng_control_status';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-layout',
@@ -8,7 +9,9 @@ import {ngControlStatusHost} from '@angular/forms/src/directives/ng_control_stat
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  userJson = localStorage.getItem('currentUser');
+
+  constructor(userService: UserService) { }
 
   ngOnInit() {
   }

@@ -10,5 +10,5 @@ export class UrlConstants {
   public static URL_MOVIES_GET_CATEGORY = UrlConstants.URL_MOVIES + '/category';
   public static URL_MOVIES_ADD_MOVIE = UrlConstants.URL_MOVIES + '/add';
   public static URL_MOVIES_ADD_TO_MY_LIST = UrlConstants.URL_MOVIES + '/save';
-  public static URL_MOVIES_GET_MY_LIST = UrlConstants.URL_MOVIES + '/saved';
+  public static URL_MOVIES_MY_LIST = UrlConstants.URL_MOVIES + '/saved';
 }

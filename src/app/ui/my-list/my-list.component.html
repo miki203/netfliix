@@ -3,6 +3,7 @@
     <img class="img-fluid img movie" src={{movie.thumbnailUrl}}/>
     <div class="gradient" (click)="ogladaj(movie)"></div>
     <span class="title_movie">{{movie.title}}</span>
-    <img class="add_to_my_list" src="assets/img/delete.png" (click)="saveToMyList(movie)">
+    <img class="my_list" src="assets/img/delete.png" (click)="deleteFromMyList(movie)">
+    <ng-flash-message class="text-center fixed-bottom"></ng-flash-message>
   </div>
 </div>

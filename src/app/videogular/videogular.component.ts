@@ -25,11 +25,22 @@ export class VideogularComponent implements OnInit, AfterViewInit {
   }
 
   saveToMyList(movie: Movie) {
+
     this.movieService.saveToMyList(movie).subscribe(data => {
-      console.log(data);
+
+    }, error1 => {
+      console.log(error1);
+    });
+
+  }
+
+  deleteFromMyList(movie: Movie) {
+    this.movieService.deleteFromMyList(movie).subscribe(data => {
+
     }, error1 => {
       console.log(error1);
     });
   }
+
 
 }

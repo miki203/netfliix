@@ -16,9 +16,11 @@ export class CategoryComponent implements OnInit {
   private moviesHorrors: any = [];
   private moviesSciFi: any = [];
   private moviesThriller: any = [];
+  img: string;
 
   constructor(private router: Router, private movieService: MovieService, private movieTransferService: MovieTransferService) {
     this.getByCategory();
+
   }
 
   ngOnInit() {
@@ -48,8 +50,18 @@ export class CategoryComponent implements OnInit {
   }
 
   saveToMyList(movie: Movie) {
+    this.router.navigateByUrl('my_list');
     this.movieService.saveToMyList(movie).subscribe(data => {
-      console.log(data);
+      this.router.navigateByUrl('category');
+    }, error1 => {
+      console.log(error1);
+    });
+  }
+
+  deleteFromMyList(movie: Movie) {
+    this.router.navigateByUrl('my_list');
+    this.movieService.deleteFromMyList(movie).subscribe(data => {
+      this.router.navigateByUrl('category');
     }, error1 => {
       console.log(error1);
     });

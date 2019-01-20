@@ -34,12 +34,15 @@ export class MovieService {
   }
 
   getMovies() {
-    return this.http.get(UrlConstants.URL_MOVIES);
+    let params = new HttpParams()
+      .append('userId', this.userId);
+    return this.http.get(UrlConstants.URL_MOVIES, {params: params});
   }
 
   getByCategory(category) {
     let params = new HttpParams()
-      .append('category', category);
+      .append('category', category)
+      .append('userId', this.userId);
     return this.http.get(UrlConstants.URL_MOVIES_GET_CATEGORY, {params: params});
   }
 
@@ -54,13 +57,20 @@ export class MovieService {
       .append('userId', this.userId);
 
     let body = JSON.stringify(movie);
-    console.log(body);
     return this.http.post(UrlConstants.URL_MOVIES_ADD_TO_MY_LIST, body, {params: params});
+  }
+
+  deleteFromMyList(movie: Movie): Observable<any> {
+    let params = new HttpParams()
+      .append('movieId', movie.id.toString())
+      .append('userId', this.userId);
+    console.log(params);
+    return this.http.delete(UrlConstants.URL_MOVIES_MY_LIST+'/'+movie.id.toString()+'/'+this.userId);
   }
 
   getMyList() {
     let params = new HttpParams()
       .append('userId', this.userId);
-    return this.http.get(UrlConstants.URL_MOVIES_GET_MY_LIST, {params: params});
+    return this.http.get(UrlConstants.URL_MOVIES_MY_LIST, {params: params});
   }
 }

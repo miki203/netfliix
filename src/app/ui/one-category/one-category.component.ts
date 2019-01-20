@@ -30,6 +30,7 @@ export class OneCategoryComponent implements OnInit {
     if (this.href === '/category/sci-fi') {
       this.movieService.getByCategory(Categories[Categories.SCI_FI]).subscribe((data: Movie[]) => {
         this.movies= data;
+        console.log(data);
       });
     }
     if (this.href === '/category/comedy') {
@@ -56,13 +57,25 @@ export class OneCategoryComponent implements OnInit {
   }
 
   saveToMyList(movie: Movie) {
+
     this.movieService.saveToMyList(movie).subscribe(data => {
+      console.log(this.router.url);
+      window.location.reload();
+    }, error1 => {
       this.ngFlashMessageService.showFlashMessage({
-        messages: ['Film dodany do "Moja lista"'],
+        messages: [error1],
         dismissible: true,
         timeout: 2000,
         type: 'success'
       });
+    });
+
+  }
+
+  deleteFromMyList(movie: Movie) {
+    this.movieService.deleteFromMyList(movie).subscribe(data => {
+      console.log(data);
+      window.location.reload();
     }, error1 => {
       this.ngFlashMessageService.showFlashMessage({
         messages: [error1],

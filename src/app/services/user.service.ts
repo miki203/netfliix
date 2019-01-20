@@ -9,6 +9,7 @@ import {UrlConstants} from '../url-constants';
   providedIn: 'root'
 })
 export class UserService {
+  public isLogged=true;
   readonly headers: HttpHeaders;
   private username: string;
   private password: string;
@@ -19,7 +20,6 @@ export class UserService {
     });
 
     let userJson = localStorage.getItem('currentUser');
-    console.log(userJson);
 
     JSON.parse(userJson, (key, value) => {
       if(key === 'username') {
@@ -37,13 +37,11 @@ export class UserService {
 
   createUser(user: User): Observable<any> {
     let body = JSON.stringify(user);
-    console.log(body);
     return this.http.post(UrlConstants.URL_USERS_CREATE, body, {headers: this.headers});
   }
 
   changePassword(newPassword: string) {
     let body = '{"newPassword": "'+ newPassword +'", "oldPassword": "'+ this.password +'", "username": "'+ this.username +'" }';
-    console.log(body);
     return this.http.put(UrlConstants.URL_USERS_CHANGE_PASS, body, {headers: this.headers});
   }
 }

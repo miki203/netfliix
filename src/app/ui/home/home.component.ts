@@ -3,7 +3,6 @@ import {Component, OnInit} from '@angular/core';
 import {ModalService} from '../../_services/ModalService';
 import {Movie} from '../../model/movie';
 import {MovieService} from '../../services/movie.service';
-import {Categories} from '../category/categories.enum';
 import {MovieTransferService} from '../../services/movie-transfer.service';
 import {Router} from '@angular/router';
 

@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="/yourpathtocss/css/videogular.css">
 
 <div class="row container bg-light">
   <div class="row">
@@ -41,7 +40,8 @@
         <p class=""><b>Opis: </b>{{movie.description}}</p>
         <p class=""><b>Kategoria: </b>{{movie.category}}</p>
       </div>
-      <button class="btn btn-success" (click)="saveToMyList(movie)">+ Moja lista</button>
+      <button class="btn btn-success" *ngIf="movie.inSaved===false"  (click)="saveToMyList(movie)">+ Moja lista</button>
+      <button class="btn btn-danger" *ngIf="movie.inSaved===true"  (click)="deleteFromMyList(movie)">- Moja lista</button>
     </div>
   </div>
 </div>
