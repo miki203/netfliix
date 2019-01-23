@@ -4,6 +4,9 @@ import {MovieService} from '../../services/movie.service';
 import {Categories} from './categories.enum';
 import {MovieTransferService} from '../../services/movie-transfer.service';
 import {Router} from '@angular/router';
+import {NgFlashMessageService} from 'ng-flash-messages';
+
+declare var $ :any;
 
 @Component({
   selector: 'app-category',
@@ -16,9 +19,13 @@ export class CategoryComponent implements OnInit {
   private moviesHorrors: any = [];
   private moviesSciFi: any = [];
   private moviesThriller: any = [];
-  img: string;
 
-  constructor(private router: Router, private movieService: MovieService, private movieTransferService: MovieTransferService) {
+  constructor(
+    private router: Router,
+    private movieService: MovieService,
+    private movieTransferService: MovieTransferService,
+    private ngFlashMessageService: NgFlashMessageService
+  ) {
     this.getByCategory();
 
   }
@@ -49,21 +56,54 @@ export class CategoryComponent implements OnInit {
     this.router.navigate(['videogular']);
   }
 
+  changeStateMyList(movie){
+    if(movie.inSaved) {
+      let src_add = 'assets/img/add.png';
+      $(".movieDel"+movie.id).attr("src", src_add);
+      this.deleteFromMyList(movie);
+      movie.inSaved=false;
+    } else {
+      let src_add = 'assets/img/delete.png';
+      $(".movieAdd"+movie.id).attr("src", src_add);
+      this.saveToMyList(movie);
+      movie.inSaved=true;
+    }
+  }
+
   saveToMyList(movie: Movie) {
-    this.router.navigateByUrl('my_list');
     this.movieService.saveToMyList(movie).subscribe(data => {
-      this.router.navigateByUrl('category');
+      this.ngFlashMessageService.showFlashMessage({
+        messages: ['Film dodany do "Moja lista"'],
+        dismissible: true,
+        timeout: 2000,
+        type: 'success'
+      });
     }, error1 => {
-      console.log(error1);
+      this.ngFlashMessageService.showFlashMessage({
+        messages: [error1],
+        dismissible: true,
+        timeout: 2000,
+        type: 'error'
+      });
     });
   }
 
   deleteFromMyList(movie: Movie) {
-    this.router.navigateByUrl('my_list');
     this.movieService.deleteFromMyList(movie).subscribe(data => {
-      this.router.navigateByUrl('category');
+      this.ngFlashMessageService.showFlashMessage({
+        messages: ['Film usunięty z "Moja lista"'],
+        dismissible: true,
+        timeout: 2000,
+        type: 'success'
+      });
     }, error1 => {
-      console.log(error1);
+      this.ngFlashMessageService.showFlashMessage({
+        messages: [error1],
+        dismissible: true,
+        timeout: 2000,
+        type: 'error'
+      });
     });
   }
+
 }

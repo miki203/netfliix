@@ -6,6 +6,8 @@ import {MovieService} from '../../services/movie.service';
 import {MovieTransferService} from '../../services/movie-transfer.service';
 import {NgFlashMessageService} from 'ng-flash-messages';
 
+declare var $ :any;
+
 @Component({
   selector: 'app-one-category',
   templateUrl: './one-category.component.html',
@@ -25,6 +27,7 @@ export class OneCategoryComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.href = this.router.url;
 
     if (this.href === '/category/sci-fi') {
@@ -51,22 +54,39 @@ export class OneCategoryComponent implements OnInit {
 
   }
 
+  changeStateMyList(movie){
+    if(movie.inSaved) {
+      let src_add = 'assets/img/add.png';
+      $("#movieDel"+movie.id).attr("src", src_add);
+      this.deleteFromMyList(movie);
+      movie.inSaved=false;
+    } else {
+      let src_add = 'assets/img/delete.png';
+      $("#movieAdd"+movie.id).attr("src", src_add);
+      this.saveToMyList(movie);
+      movie.inSaved=true;
+    }
+  }
+
   ogladaj(movie: Movie) {
     this.movieTransferService.setMovie(movie);
     this.router.navigate(['videogular']);
   }
 
   saveToMyList(movie: Movie) {
-
     this.movieService.saveToMyList(movie).subscribe(data => {
-      console.log(this.router.url);
-      window.location.reload();
+      this.ngFlashMessageService.showFlashMessage({
+        messages: ['Film dodany do "Moja lista"'],
+        dismissible: true,
+        timeout: 2000,
+        type: 'success'
+      });
     }, error1 => {
       this.ngFlashMessageService.showFlashMessage({
         messages: [error1],
         dismissible: true,
         timeout: 2000,
-        type: 'success'
+        type: 'error'
       });
     });
 
@@ -74,14 +94,18 @@ export class OneCategoryComponent implements OnInit {
 
   deleteFromMyList(movie: Movie) {
     this.movieService.deleteFromMyList(movie).subscribe(data => {
-      console.log(data);
-      window.location.reload();
+      this.ngFlashMessageService.showFlashMessage({
+        messages: ['Film usunięty z "Moja lista"'],
+        dismissible: true,
+        timeout: 2000,
+        type: 'success'
+      });
     }, error1 => {
       this.ngFlashMessageService.showFlashMessage({
         messages: [error1],
         dismissible: true,
         timeout: 2000,
-        type: 'success'
+        type: 'error'
       });
     });
   }

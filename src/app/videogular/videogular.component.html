@@ -40,8 +40,9 @@
         <p class=""><b>Opis: </b>{{movie.description}}</p>
         <p class=""><b>Kategoria: </b>{{movie.category}}</p>
       </div>
-      <button class="btn btn-success" *ngIf="movie.inSaved===false"  (click)="saveToMyList(movie)">+ Moja lista</button>
-      <button class="btn btn-danger" *ngIf="movie.inSaved===true"  (click)="deleteFromMyList(movie)">- Moja lista</button>
+      <button class="btn btn-success" id="movieAdd{{movie.id}}" *ngIf="movie.inSaved===false"  (click)="changeStateMyList(movie)">+ Moja lista</button>
+      <button class="btn btn-danger" id="movieDel{{movie.id}}" *ngIf="movie.inSaved===true"  (click)="changeStateMyList(movie)">- Moja lista</button>
     </div>
   </div>
 </div>
+<ng-flash-message class="text-center fixed-bottom"></ng-flash-message>
